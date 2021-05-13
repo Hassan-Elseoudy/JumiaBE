@@ -1,7 +1,19 @@
 spring:
+  application.name: jumia-app
+
   datasource:
-    url: jdbc:mysql://localhost/jumia?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/jumia?createDatabaseIfNotExist=true
     username: root
-    password: root
-    platform: mysql
+    password: password
     initialization-mode: always
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    open-in-view: true
+
+server:
+  servlet:
+    context-path: /api/v1/jumia
