@@ -1,0 +1,21 @@
+version: "3"
+services:
+  jumia_app_exercise:
+    image: hassanelseoudy97/jumia_app_exercise
+    ports:
+      - "8080:8080"
+    networks:
+      - jumia-mysql
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8
+    networks:
+      - jumia-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=jumia
+
+networks:
+  jumia-mysql:
