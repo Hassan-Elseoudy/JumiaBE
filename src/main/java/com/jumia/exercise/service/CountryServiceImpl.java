@@ -27,7 +27,7 @@ public class CountryServiceImpl implements CountryService {
      */
     @Override
     public Country getCountryByNumber(String number) {
-        String countryCode = number.split("\\s+")[0].replace("\\(", "").replace("\\)", "");
+        String countryCode = number.split("\\s+")[0].replace("(", "").replace(")", "");
         return countryRepository.findCountryByCode(countryCode).orElseThrow(NoSuchElementException::new);
     }
 
