@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.jumia</groupId>
 	<artifactId>exercise</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>exercise</name>
+	<version>0.1</version>
+	<name>jumia</name>
 	<description>Jumia Exercise Project</description>
 	<properties>
 		<java.version>11</java.version>

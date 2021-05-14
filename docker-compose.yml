@@ -33,6 +33,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://jumia-db:3306/jumia?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: jumia_user
       SPRING_DATASOURCE_PASSWORD: jumia_password
+    container_name: jumia-app
 
 networks:
   jumia-app-network:
