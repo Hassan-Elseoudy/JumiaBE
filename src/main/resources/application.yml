@@ -2,7 +2,7 @@ spring:
   application.name: jumia-app
 
   datasource:
-    url: jdbc:mysql://localhost:3306/jumia?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysqldb:3306/jumia?createDatabaseIfNotExist=true&useSSL=false
     username: root
     password: password
     initialization-mode: always
@@ -13,6 +13,9 @@ spring:
       ddl-auto: create-drop
     generate-ddl: true
     open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 
 server:
   servlet:

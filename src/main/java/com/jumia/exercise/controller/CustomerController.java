@@ -32,7 +32,7 @@ public class CustomerController {
      */
     @GetMapping
     public ResponseEntity<List<CustomerResponseV1>> getMany(
-            @ApiParam(name = "countryId", defaultValue = "0", allowableValues = "0,1,2,3,4", value = "Id of country, 0: Cameroon, 1: Ethiopia, 2: Morocco, 3: Mozambique, 4: Uganda")
+            @ApiParam(name = "countryId", defaultValue = "0", allowableValues = "0,1,2,3,4", value = " Id of country, 0: Cameroon, 1: Ethiopia, 2: Morocco, 3: Mozambique, 4: Uganda")
             @RequestParam(name = "countryId", required = false) Integer countryId,
             @RequestParam(name = "state", required = false) Boolean isValid) {
         return ResponseEntity.ok(customerService.getMany(countryId, isValid));

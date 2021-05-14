@@ -1,7 +1,7 @@
 version: "3"
 services:
   jumia_app_exercise:
-    image: hassanelseoudy97/jumia_app_exercise
+    image: hassanelseoudy97/jumia_app_exercise:latest
     ports:
       - "8080:8080"
     networks:
@@ -10,12 +10,14 @@ services:
       - mysqldb
 
   mysqldb:
-    image: mysql:8
+    image: mysql:5.7
     networks:
       - jumia-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=jumia
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
 
 networks:
   jumia-mysql:

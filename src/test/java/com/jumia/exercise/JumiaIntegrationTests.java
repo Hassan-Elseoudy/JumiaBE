@@ -45,7 +45,7 @@ public class JumiaIntegrationTests extends JumiaApplicationTests {
         // Act
         mockMvc.perform(MockMvcRequestBuilders.
                 get("/customer")
-                .param("valid", String.valueOf(true))
+                .param("state", String.valueOf(true))
                 .contentType(MediaType.APPLICATION_JSON))
                 // Assert
                 .andDo(print())
@@ -58,7 +58,7 @@ public class JumiaIntegrationTests extends JumiaApplicationTests {
         // Act
         mockMvc.perform(MockMvcRequestBuilders.
                 get("/customer")
-                .param("valid", String.valueOf(false))
+                .param("state", String.valueOf(false))
                 .contentType(MediaType.APPLICATION_JSON))
                 // Assert
                 .andDo(print())
@@ -71,7 +71,7 @@ public class JumiaIntegrationTests extends JumiaApplicationTests {
         // Act
         mockMvc.perform(MockMvcRequestBuilders.
                 get("/customer")
-                .param("country", "0")
+                .param("countryId", "0")
                 .contentType(MediaType.APPLICATION_JSON))
                 // Assert
                 .andDo(print())
@@ -84,8 +84,8 @@ public class JumiaIntegrationTests extends JumiaApplicationTests {
         // Act
         mockMvc.perform(MockMvcRequestBuilders.
                 get("/customer")
-                .param("valid", String.valueOf(true))
-                .param("country", "0")
+                .param("state", String.valueOf(true))
+                .param("countryId", "0")
                 .contentType(MediaType.APPLICATION_JSON))
                 // Assert
                 .andDo(print())
@@ -98,8 +98,8 @@ public class JumiaIntegrationTests extends JumiaApplicationTests {
         // Act
         mockMvc.perform(MockMvcRequestBuilders.
                 get("/customer")
-                .param("valid", String.valueOf(false))
-                .param("country", "0")
+                .param("state", String.valueOf(false))
+                .param("countryId", "0")
                 .contentType(MediaType.APPLICATION_JSON))
                 // Assert
                 .andDo(print())
