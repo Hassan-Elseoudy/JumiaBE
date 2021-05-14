@@ -2,6 +2,7 @@ package com.jumia.exercise.controller;
 
 import com.jumia.exercise.controller.dto.CustomerResponseV1;
 import com.jumia.exercise.service.CustomerService;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,11 +32,14 @@ public class CustomerController {
      * @return List of Customer Responses
      */
     @GetMapping
+    @ApiOperation(value = "View a list of customers", response = List.class)
     public ResponseEntity<List<CustomerResponseV1>> getMany(
             @ApiParam(name = "countryId", defaultValue = "0", allowableValues = "0,1,2,3,4", value = " Id of country, 0: Cameroon, 1: Ethiopia, 2: Morocco, 3: Mozambique, 4: Uganda")
             @RequestParam(name = "countryId", required = false) Integer countryId,
-            @RequestParam(name = "state", required = false) Boolean isValid) {
-        return ResponseEntity.ok(customerService.getMany(countryId, isValid));
+            @RequestParam(name = "state", required = false) Boolean isValid,
+            @RequestParam(name = "page", defaultValue = "0") Integer page,
+            @RequestParam(name = "size", defaultValue = "10") Integer size) {
+        return ResponseEntity.ok(customerService.getMany(countryId, isValid, page, size));
     }
 
 }

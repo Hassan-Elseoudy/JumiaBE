@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<CustomerResponseV1> getMany(Integer countryId, Boolean isValid);
+    List<CustomerResponseV1> getMany(Integer countryId, Boolean isValid, Integer page, Integer size);
 }

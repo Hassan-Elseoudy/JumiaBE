@@ -1,6 +1,6 @@
 spring:
   datasource:
-    password: jumia_password
+    password: password
 
   config:
     activate:

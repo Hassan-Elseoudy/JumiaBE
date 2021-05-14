@@ -5,6 +5,8 @@ import com.jumia.exercise.model.Country;
 import com.jumia.exercise.model.Customer;
 import com.jumia.exercise.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,24 +29,27 @@ public class CustomerServiceImpl implements CustomerService {
      * Used to get many customers with specified filters.
      * @param countryId filter by country Id.
      * @param state filter by state (valid regex number or not)
+     * @param page page number
+     * @param size page size
      * @return List of customers.
      */
     @Override
-    public List<CustomerResponseV1> getMany(Integer countryId, Boolean state) {
+    public List<CustomerResponseV1> getMany(Integer countryId, Boolean state, Integer page, Integer size) {
         List<Customer> customers = new ArrayList<>();
+        Pageable pageable = PageRequest.of(page, size);
 
         if (countryId != null) { // If country filter is activated, then get customers by code.
-            customers.addAll(customerRepository.findAllByPhoneStartingWith("(" + countryService.getOne(countryId).getCode() + ")"));
+            customers.addAll(customerRepository.findAllByPhoneStartingWith("(" + countryService.getOne(countryId).getCode() + ")", pageable).toList());
         }
 
         if (state != null) { // If we have previous filters, we need to filter the previous result by the state.
             customers = customers.stream().filter(customer -> isMatchingState(customer.getPhone(), state)).collect(Collectors.toList());
             if (countryId == null) // If we don't have any filters activated, then we should get all customers and filter by state.
-                customers.addAll(customerRepository.findAll().stream().filter(customer -> isMatchingState(customer.getPhone(), state)).collect(Collectors.toList()));
+                customers.addAll(customerRepository.findAll(pageable).filter(customer -> isMatchingState(customer.getPhone(), state)).toList());
         }
 
         if (state == null && countryId == null) { // There's no Filtration Activated, Just find Customers.
-            customers.addAll(customerRepository.findAll());
+            customers.addAll(customerRepository.findAll(pageable).toList());
         }
 
         return customers
