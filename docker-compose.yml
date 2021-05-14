@@ -1,23 +1,38 @@
 version: "3"
 services:
-  jumia_app_exercise:
+  mysql-docker-container:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: jumia
+      MYSQL_ROOT_PASSWORD: jumia_password
+      MYSQL_USER: jumia_user
+      MYSQL_PASSWORD: jumia_password
+    volumes:
+      - /data/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - jumia-app-network
+    container_name: jumia-db
+
+  jumia_app:
     image: hassanelseoudy97/jumia_app_exercise:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-docker-container
     ports:
       - "8080:8080"
+    volumes:
+      - /data/spring-boot-app
     networks:
-      - jumia-mysql
-    depends_on:
-      - mysqldb
-
-  mysqldb:
-    image: mysql:5.7
-    networks:
-      - jumia-mysql
+      - jumia-app-network
+    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=jumia
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
+      SPRING_DATASOURCE_URL: jdbc:mysql://jumia-db:3306/jumia?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: jumia_user
+      SPRING_DATASOURCE_PASSWORD: jumia_password
 
 networks:
-  jumia-mysql:
+  jumia-app-network:

@@ -2,11 +2,12 @@ spring:
   application.name: jumia-app
 
   datasource:
-    url: jdbc:mysql://mysqldb:3306/jumia?createDatabaseIfNotExist=true&useSSL=false
-    username: root
-    password: password
+    url: jdbc:mysql://localhost:3306/jumia
+    username: jumia_user
+    password: jumia_password
     initialization-mode: always
     driverClassName: com.mysql.cj.jdbc.Driver
+    platform: mysql
 
   jpa:
     hibernate:
