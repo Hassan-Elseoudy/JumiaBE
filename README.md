@@ -16,3 +16,6 @@ A single page application in Java (Frameworks allowed) that uses the provided da
 2. Using *YAGNI* principle, I only added the `@GetMapping` request in `CustomerController`, If the requirements were to add multiple endpoints, then It should be easily done later.
 3. I preferred to use `Country` as a table in the project, rather that `ImmutableObjects`, So that we can easily add/remove/update the regex, but as I mentioned, no controllers.
 4. There was no default values for page sizes, so I sat default to `10` and max page size to `50`.
+
+#### Notes about testing:
+You can test on your local machine by run the `JumiaIntegrationTests` file, I updated the `application-test` dialect.
