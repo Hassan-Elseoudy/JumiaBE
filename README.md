@@ -2,12 +2,13 @@
 A single page application in Java (Frameworks allowed) that uses the provided database to list and categorize country phone numbers.
 
 ### How to run?
+Open your terminal then:
 1. `git clone https://github.com/Hassan-Elseoudy/JumiaBE`
 2. `docker-compose up`
-
+3. Wait for some time till it loads, Around to ~ 30 seconds till you see `Started JumiaApplication in xx.xxx seconds`
 ### How to test?
 1. You can check from swagger over: http://localhost:8080/api/v1/jumia/swagger-ui/
-2. Select `Customer Controller` and then select `GET /api/v1/jumia/customer`
+2. Select `Customer Controller` and then select `GET /api/v1/jumia/customer` then on the right, select `Try it out`.
 3. You can filter by Country Id or by state or without any filtration.
 4. You can paginate by page number and size.
 
