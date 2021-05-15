@@ -7,7 +7,7 @@ A single page application in Java (Frameworks allowed) that uses the provided da
 
 ### How to test?
 1. You can check from swagger over: http://localhost:8080/api/v1/jumia/swagger-ui/
-2. Select `Customer Controller` and then select `GET /api/v1/jumia/customer`
+2. Select `Customer Controller` and then select `GET /api/v1/jumia/customer` then on the right, select `Try it out`.
 3. You can filter by Country Id or by state or without any filtration.
 4. You can paginate by page number and size.
 
