@@ -17,9 +17,6 @@ services:
 
   jumia_app:
     image: hassanelseoudy97/jumia_app_exercise:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
     depends_on:
       - mysql-docker-container
     ports:

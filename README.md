@@ -3,7 +3,7 @@ A single page application in Java (Frameworks allowed) that uses the provided da
 
 ### How to run?
 1. `git clone https://github.com/Hassan-Elseoudy/JumiaBE`
-2. `docker-compose up --build`
+2. `docker-compose up`
 
 ### How to test?
 1. You can check from swagger over: http://localhost:8080/api/v1/jumia/swagger-ui/
